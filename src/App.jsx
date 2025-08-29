@@ -1,11 +1,14 @@
 import React from 'react';
+import Slider from 'react-slick'; 
+import "slick-carousel/slick/slick.css"; // Correct import for main slick CSS
+import "slick-carousel/slick/slick-theme.css"; // Correct import for theme CSS
 import './App.css';
 
 // Importamos imágenes
 import dulceImg from './assets/dulce.png';
 import agridulceImg from './assets/agridulce.png';
 import acidoImg from './assets/acido.png';
-import mangoLogo from './assets/mango.png'; // 👈 Logo agregado
+import mangoLogo from './assets/mango.png';
 
 const productData = [
   {
@@ -23,15 +26,25 @@ const productData = [
   {
     id: '3',
     name: 'Mango ácido',
-    description: 'Trae sal, limon, tajin, pimienta.',
+    description: 'Trae sal, limón, tajín, pimienta.',
     image: acidoImg,
   },
 ];
 
 const App = () => {
+  const settings = {
+    dots: true, 
+    infinite: true, 
+    speed: 500,
+    slidesToShow: 1, 
+    slidesToScroll: 1, 
+    arrows: false, 
+    autoplay: true, 
+    autoplaySpeed: 3000,
+  };
+
   return (
     <div className="app-container">
-      {/* Banner de Mango Mix */}
       <div className="banner">
         <img 
           src={mangoLogo} 
@@ -40,10 +53,9 @@ const App = () => {
         />
       </div>
 
-      {/* Sección de "Nuestros Productos" */}
       <section className="products-section">
         <h2 className="section-title">Nuestros Productos</h2>
-        <div className="product-list">
+        <Slider {...settings} className="product-carousel"> 
           {productData.map(product => (
             <div key={product.id} className="product-card">
               <img 
@@ -55,10 +67,9 @@ const App = () => {
               <p className="product-description">{product.description}</p>
             </div>
           ))}
-        </div>
+        </Slider>
       </section>
 
-      {/* Footer con Contáctanos */}
       <footer className="footer">
         <h2 className="footer-title">Contáctanos</h2>
         <div className="footer-info">
