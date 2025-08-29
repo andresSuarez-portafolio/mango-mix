@@ -1,21 +1,30 @@
 import React from 'react';
 import './App.css';
 
+// Importamos imágenes
+import dulceImg from './assets/dulce.png';
+import agridulceImg from './assets/agridulce.png';
+import acidoImg from './assets/acido.png';
+import mangoLogo from './assets/mango.png'; // 👈 Logo agregado
+
 const productData = [
   {
     id: '1',
     name: 'Mango dulce',
-    description: 'Trae lecherita, mermelada de mora, pepitas de colores.',
+    description: 'Trae lecherita, salsa de mora, pepitas de colores.',
+    image: dulceImg,
   },
   {
     id: '2',
-    name: 'Mango mix',
+    name: 'Mango agridulce',
     description: 'Un equilibrio perfecto entre dulzura y un toque sutil de acidez.',
+    image: agridulceImg,
   },
   {
     id: '3',
     name: 'Mango ácido',
     description: 'Trae sal, limon, tajin, pimienta.',
+    image: acidoImg,
   },
 ];
 
@@ -24,7 +33,11 @@ const App = () => {
     <div className="app-container">
       {/* Banner de Mango Mix */}
       <div className="banner">
-        <h1 className="banner-title">Mango Mix</h1>
+        <img 
+          src={mangoLogo} 
+          alt="Mango Mix Logo" 
+          className="banner-logo"
+        />
       </div>
 
       {/* Sección de "Nuestros Productos" */}
@@ -33,6 +46,11 @@ const App = () => {
         <div className="product-list">
           {productData.map(product => (
             <div key={product.id} className="product-card">
+              <img 
+                src={product.image} 
+                alt={product.name} 
+                className="product-image" 
+              />
               <h3 className="product-name">{product.name}</h3>
               <p className="product-description">{product.description}</p>
             </div>

@@ -1,134 +1,163 @@
 /* Contenedor principal */
 .app-container {
   min-height: 100vh;
-  width: 100vw;
-  background-color: #fff8e1; /* Fondo claro estilo crema */
+  width: 100%;
+  background-color: #fff8e1; /* Fondo crema */
   display: flex;
   flex-direction: column;
   align-items: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding-bottom: 20px;
+  padding-bottom: 0;
   position: relative;
+  overflow-x: hidden;
 }
 
 /* Degradado superior */
 .app-container::before {
   content: '';
   width: 100%;
-  height: 220px;
-  background: linear-gradient(135deg, #FFD54F, #FF9800); /* Amarillo → Naranja */
+  height: 180px;
+  background: linear-gradient(135deg, #FFD54F, #FF9800);
   position: absolute;
   top: 0;
   left: 0;
   z-index: 0;
-  border-radius: 0 0 20px 20px;
 }
 
-/* Banner principal */
+/* Banner */
 .banner {
   width: 100%;
-  height: 120px;
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 60px;
+  margin-top: 50px;
   z-index: 1;
 }
 
 .banner-title {
-  font-size: 4rem;
+  font-size: 2.2rem; /* más pequeño para celular */
   font-weight: 900;
-  color: #2e7d32; /* Verde más fresco */
-  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.25);
-  letter-spacing: 3px;
+  color: #2e7d32;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.25);
+  letter-spacing: 2px;
+  text-align: center;
 }
 
-/* Sección de productos */
+/* Sección productos */
 .products-section {
   width: 100%;
-  max-width: 950px;
-  padding: 40px 20px;
-  background-color: #ffffff; /* Fondo limpio */
-  border-radius: 15px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
-  margin: 40px 0;
+  padding: 25px 15px;
+  background-color: #ffffff;
+  border-radius: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  margin: 25px 0;
   text-align: center;
   z-index: 1;
 }
 
 .section-title {
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
   color: #ff9800;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 /* Tarjetas */
 .product-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 25px;
+  grid-template-columns: 1fr; /* una por fila en celular */
+  gap: 20px;
 }
 
 .product-card {
-  background: linear-gradient(135deg, #fffde7, #ffecb3); /* Degradado suave amarillo */
-  border-radius: 15px;
-  padding: 25px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #fffde7, #ffecb3);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   border: 1px solid #ffe082;
 }
 
 .product-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-.product-name {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #4caf50; /* Verde mango fresco */
+.product-image {
+  width: 140px;
+  height: auto;
   margin-bottom: 10px;
 }
 
+.product-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #4caf50;
+  margin-bottom: 8px;
+}
+
 .product-description {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: #555;
 }
 
 /* Contacto */
 .contact-section {
   width: 100%;
-  max-width: 950px;
-  padding: 40px 20px;
+  padding: 30px 15px;
   background: linear-gradient(135deg, #ffecb3, #ffd54f);
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  margin-bottom: 30px;
+  border-radius: 0;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0;
   text-align: center;
   z-index: 1;
 }
 
 .contact-section h2 {
+  font-size: 1.6rem;
   color: #2e7d32;
 }
 
 .contact-info p {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #333;
-  margin-bottom: 10px;
+  margin: 8px 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
 }
 
-.contact-info p span[role="img"] {
-  font-size: 1.3rem;
+/* Footer */
+.footer {
+  width: 100%;
+  height: auto;
+  padding: 25px 10px;
+  background: linear-gradient(135deg, #FFD54F, #FF9800);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
-/* General reset */
+.footer-title {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #2e7d32;
+  margin-bottom: 8px;
+}
+
+.footer-info p {
+  font-size: 1rem;
+  color: #fff;
+  margin: 4px 0;
+  font-weight: 500;
+}
+
+/* Reset */
 body {
   margin: 0;
   padding: 0;
@@ -140,31 +169,23 @@ body {
   display: flex;
   justify-content: center;
 }
-/* Footer con estilo igual al banner */
-.footer {
-  width: 100%;
-  height: 150px;
-  background: linear-gradient(135deg, #FFD54F, #FF9800);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 20px 20px 0 0;
-  margin-top: 40px;
-  text-align: center;
-}
 
-.footer-title {
-  font-size: 2rem;
-  font-weight: 900;
-  color: #2e7d32; /* Verde intenso */
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.25);
-  margin-bottom: 10px;
-}
+/* Responsive para pantallas más grandes */
+@media (min-width: 768px) {
+  .banner-title {
+    font-size: 3rem;
+  }
 
-.footer-info p {
-  font-size: 1.1rem;
-  color: #fff;
-  margin: 5px 0;
-  font-weight: 500;
+  .section-title {
+    font-size: 2.2rem;
+  }
+
+  .product-list {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+}
+.banner-logo {
+  height: 220px; /* Ajusta el tamaño según necesites */
+  width: auto;
+  object-fit: contain;
 }
