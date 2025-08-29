@@ -185,7 +185,7 @@ body {
   }
 }
 .banner-logo {
-  height: 220px; /* Ajusta el tamaño según necesites */
+  height: 200px; /* Ajusta el tamaño según necesites */
   width: auto;
   object-fit: contain;
 }
