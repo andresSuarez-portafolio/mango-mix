@@ -1,4 +1,4 @@
-/* Contenedor principal */
+/* Contenedor principal de la aplicación */
 .app-container {
   min-height: 100vh;
   width: 100%;
@@ -7,52 +7,45 @@
   flex-direction: column;
   align-items: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding-bottom: 0;
-  position: relative;
-  overflow-x: hidden;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Degradado superior */
-.app-container::before {
-  content: '';
-  width: 100%;
-  height: 180px;
-  background: linear-gradient(135deg, #FFD54F, #FF9800);
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0;
-}
-
-/* Banner */
+/* Sección superior del banner con el logo */
 .banner {
   width: 100%;
-  height: 100px;
+  padding: 50px 0 20px 0;
+  background: linear-gradient(135deg, #FFD54F, #FF9800);
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
-  z-index: 1;
 }
 
 .banner-logo {
-  height: 200px; 
-  width: auto;
+  height: auto;
+  width: 180px; /* Tamaño del logo para móviles */
   object-fit: contain;
-  display: block; /* Asegura que el margin: auto funcione */
-  margin: 0 auto; /* Centra la imagen */
 }
 
-/* Sección productos */
-.products-section {
-  width: 100%;
-  padding: 25px 0;
+/* Contenedor del contenido principal */
+.content-wrapper {
+  width: 95%;
+  max-width: 900px; /* Evita que el contenido se estire demasiado en pantallas grandes */
   background-color: #ffffff;
-  border-radius: 0;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  margin: 25px 0;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top: -30px; /* Se superpone con el banner para un efecto visual */
+  z-index: 10; /* Asegura que el contenido esté por encima del banner */
+  display: flex;
+  flex-direction: column;
+  gap: 25px; /* Espacio entre las secciones de productos y el footer */
+}
+
+/* Sección de productos */
+.products-section {
   text-align: center;
-  z-index: 1;
+  padding: 10px;
 }
 
 .section-title {
@@ -62,56 +55,51 @@
   margin-bottom: 20px;
 }
 
-/* Ajustes para el carrusel de react-slick */
-.product-carousel {
-  width: 90%; 
-  margin: 0 auto; 
+/* Lista de productos con diseño de grilla */
+.product-list {
+  display: grid;
+  grid-template-columns: 1fr; /* Una columna por defecto (móviles) */
+  gap: 20px;
 }
 
-/* Tarjetas */
+/* Tarjetas de productos */
 .product-card {
   background: linear-gradient(135deg, #fffde7, #ffecb3);
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
   text-align: center;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: 1px solid #ffe082;
-  margin: 0 5px; 
 }
 
-/* Centrar la imagen dentro de la tarjeta */
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
 .product-image {
-  width: 200px; 
+  width: 120px;
   height: auto;
-  margin: 0 auto 15px; /* Centra la imagen y le da un margen inferior */
-  display: block;
-}
-
-.product-name {
-  font-size: 1.5rem; 
-  font-weight: bold;
-  color: #4caf50;
   margin-bottom: 10px;
 }
 
-.product-description {
-  font-size: 1rem;
-  color: #555;
-  padding: 0 10px;
+.product-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #4caf50;
+  margin-bottom: 8px;
 }
 
-/* Footer */
+.product-description {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Footer (Contáctanos) */
 .footer {
-  width: 100%;
-  height: auto;
-  padding: 25px 10px;
-  background: linear-gradient(135deg, #FFD54F, #FF9800);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   text-align: center;
+  padding: 10px;
 }
 
 .footer-title {
@@ -123,12 +111,39 @@
 
 .footer-info p {
   font-size: 1rem;
-  color: #fff;
-  margin: 4px 0;
-  font-weight: 500;
+  color: #333;
+  margin: 8px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
-/* Reset y responsivo */
+/* Media Query para pantallas más grandes (tablets y desktops) */
+@media (min-width: 768px) {
+  .banner-logo {
+    width: 200px; /* Ajuste para evitar solapamiento en PC */
+  }
+
+  .content-wrapper {
+    padding: 40px;
+    margin-top: -50px; /* Ajuste para evitar solapamiento en PC */
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+  }
+
+  .product-list {
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas en pantallas más grandes */
+  }
+
+  .product-image {
+    width: 150px;
+  }
+}
+
+/* Reset de estilos básicos */
 body {
   margin: 0;
   padding: 0;
@@ -139,45 +154,4 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
-}
-
-/* Ocultar flechas del carrusel por defecto */
-.slick-prev, .slick-next {
-    display: none !important;
-}
-
-/* Estilos para los puntos de navegación */
-.slick-dots li button:before {
-  font-size: 10px;
-  color: #ff9800 !important;
-  opacity: 0.75;
-}
-
-.slick-dots li.slick-active button:before {
-  color: #ff9800 !important;
-  opacity: 1;
-}
-
-/* Media query para pantallas más grandes (opcional, si quieres mantener la vista de cuadrícula) */
-@media (min-width: 768px) {
-  .banner-title {
-    font-size: 3rem;
-  }
-
-  .section-title {
-    font-size: 2.2rem;
-  }
-
-  /* Desactivar el carrusel en escritorio si prefieres la vista de cuadrícula */
-  .product-carousel {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 20px;
-    width: 100%;
-  }
-
-  /* Ocultar los puntos de navegación en escritorio */
-  .slick-dots {
-    display: none !important;
-  }
 }
